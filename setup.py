@@ -5,7 +5,11 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="grouping_sizePkg",
+<<<<<<< HEAD
     version="0.0.5",
+=======
+    version="0.0.1",
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
     author="Example Author",
     author_email="author@example.com",
     description="Grouping for cmf",

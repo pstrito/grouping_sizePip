@@ -13,8 +13,11 @@ class mf_movement():
         self.df_3_profits = pd.DataFrame(columns = ['n', 'Static_Profit', 'Unlimited_Dyn_Profit', 'Limited_Dyn_Profit'])
         self.dynamic_profit = 0
         self.df = pd.DataFrame()
+<<<<<<< HEAD
         self.Limited_Dyn_Profit = 0.0
         self.Static_Profit = 0.0
+=======
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
         
     def empty_row_rmvl(self, df):
         import pandas as pd
@@ -229,13 +232,22 @@ class mf_movement():
         total_spent_on_shares = dfBuySell1['Bought'].sum()
         total_cost = initial_invest + total_spent_on_shares
         remaining_share_value = net_shares_remaining * dfBuySell1.iloc[x, 3]
+<<<<<<< HEAD
         total_gain = float(remaining_share_value) + int(total_received_from_shares * 100) / 100 
         profit_dynamic = total_gain - total_cost 
+=======
+        total_gain = float(remaining_share_value) + int(total_received_from_shares * 100) / 100 ##############
+        profit_dynamic = total_gain - total_cost #####################################
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
         self.dynamic_profit = profit_dynamic
         dynamic_gain_ratio = profit_dynamic/total_cost
         dynamic_gain_percentage = '{:,.2%}'.format(dynamic_gain_ratio)
         ending_value = self.begin_shares * dfBuySell1.iloc[x, 3]
+<<<<<<< HEAD
         profit_static = ending_value - initial_invest 
+=======
+        profit_static = ending_value - initial_invest  ###################################
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
         static_gain = profit_static/initial_invest
         static_gain_percentage = '{:,.2%}'.format(static_gain)
         
@@ -290,9 +302,12 @@ class mf_movement():
         
     def section_defin_inflection_cmf(self, df): #this defines the range and resolution for the AV for evaluation
         import pandas as pd
+<<<<<<< HEAD
         #import grouping_sizePkg.grouping_sizePkg
         #mf = grouping_sizePkg.grouping_sizePkg.mf_movement()
         
+=======
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
         begin = int(input('What is the starting Averaging Value Position for the CMF? [Number greater than 10] ')) 
         end = int(input('What is the ending Averaging Value position for the CMF? [Number greater that starting #] ')) 
         resolution = int(input('What is the resolution? [integer value] '))   
@@ -308,7 +323,11 @@ class mf_movement():
             if 'level_0' in df.columns:
                 dfA = df.drop(['level_0'], axis = 1)
             
+<<<<<<< HEAD
             dfA = self.cmf(df, begin_index) # = num_days is the number of days that are combined together to to produce the indicator
+=======
+            dfA = mf.cmf(df, begin_index) # = num_days is the number of days that are combined together to to produce the indicator
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
             
             #### Dataframe clean up #####
             if 'index' in dfA.columns:
@@ -316,12 +335,20 @@ class mf_movement():
             if 'level_0' in dfA.columns:
                 dfA = dfA.drop(['level_0'], axis = 1)
                 
+<<<<<<< HEAD
             dfA = self.empty_row_rmvl(dfA)
+=======
+            dfA = mf.empty_row_rmvl(dfA)
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
             
             if 'index' in dfA.columns:
                 dfA = dfA.drop(['index'], axis = 1)
             
+<<<<<<< HEAD
             df1 = self.buy_sell_signals(dfA) #246
+=======
+            df1 = mf.buy_sell_signals(dfA) #246
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
             
             if 'Date' in df1.columns:
                 df1 = df1.drop(['Date'], axis = 1)
@@ -332,14 +359,26 @@ class mf_movement():
             
             df1 = df1.rename(columns = {'index':'Date'})
             
+<<<<<<< HEAD
             dfC = self.shares_owned(dfA, begin_index) #for pos/neg cmf with limit of 0 to 1 share max
+=======
+            dfC = mf.shares_owned(dfA, begin_index) #for pos/neg cmf with limit of 0 to 1 share max
+            
+            
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
             
             #### Writes the last index information to the summary table              ####
             
             if begin_index == end_index: #
+<<<<<<< HEAD
                 summary_table = self.buying_selling(df1) #336
             else:
                 self.buying_selling(df1) #336
+=======
+                summary_table = mf.buying_selling(df1) #336
+            else:
+                mf.buying_selling(df1) #336
+>>>>>>> 1bd19eb890e6fab33865ad499d35ad6da84f4fb1
                 
             lst = [dfA, df1, dfC]
             del lst     # memory is released
